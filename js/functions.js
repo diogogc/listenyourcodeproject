@@ -23,12 +23,26 @@ function readSingleFile(evt) {
                             var contents = e.target.result;
                             var countLines = contents.split("\n");
 //                            var contCharsOnLine = countLines[1];
-                            var sine = []; 
-                            for (var i=0; i<countLines.length; i++)
-                            { 
-                                sine[i] = 128+Math.round(127*Math.sin(countLines[i].length/3));
+                            var newData = [];
+                            var cont = 0;
+                            for (var i=0; i<(countLines.length); i++)
+                            {
+                                for (var z = 0; z < (44100/12); z ++)
+                                {
+                                    newData[cont] = Math.round(128 + 127 * Math.sin((z * 2 * Math.PI * (countLines[i].length+440)) /44100));
+                                    cont ++;
+                                }
+    
                             }
-                            var wave2 = new RIFFWAVE(sine);
+                            
+//                            var contCharsOnLine = countLines[1];
+
+                            // var sine = [];
+                            // for (var i=0; i<countLines.length; i++)
+                            // { 
+                            //     sine[i] = 128+Math.round(127*Math.sin(countLines[i]/countLines.length));
+                            // }
+                            var wave2 = new RIFFWAVE(newData);
                             var audio2 = new Audio(wave2.dataURI);
                             audio2.play();
 //                        alert( "Got the file.\n" 

@@ -14,7 +14,6 @@
  *
  * 8 bit data is unsigned: 0..255
  * 16 bit data is signed: −32,768..32,767
- *
  */
 
 var FastBase64 = {
@@ -73,7 +72,7 @@ var RIFFWAVE = function(data) {
         subChunk1Size: 16,                    // 16   4    16 for PCM
         audioFormat  : 1,                     // 20   2    PCM = 1
         numChannels  : 1,                     // 22   2    Mono = 1, Stereo = 2...
-        sampleRate   : 8000,                  // 24   4    8000, 44100...
+        sampleRate   : 44100,                  // 24   4    8000, 44100...
         byteRate     : 0,                     // 28   4    SampleRate*NumChannels*BitsPerSample/8
         blockAlign   : 0,                     // 32   2    NumChannels*BitsPerSample/8
         bitsPerSample: 8,                     // 34   2    8 bits = 8, 16 bits = 16
@@ -106,7 +105,6 @@ var RIFFWAVE = function(data) {
         this.header.byteRate = this.header.blockAlign * this.sampleRate;
         this.header.subChunk2Size = this.data.length * (this.header.bitsPerSample >> 3);
         this.header.chunkSize = 36 + this.header.subChunk2Size;
-
         this.wav = this.header.chunkId.concat(
             u32ToArray(this.header.chunkSize),
             this.header.format,
