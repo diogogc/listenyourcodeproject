@@ -3,6 +3,7 @@
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="js/html5-canvas-bar-graph.js"></script>
         <script type="text/javascript" src="js/riffwave.js"></script>
         <script type="text/javascript" src="js/functions.js"></script>
     </head>
@@ -13,5 +14,6 @@
                 document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
             </script>
         </div>
+        <div id="graphDiv1"></div>
     </body>
 </html>
