@@ -27,9 +27,10 @@ function readSingleFile(evt) {
                             var cont = 0;
                             for (var i=0; i<(countLines.length); i++)
                             {
-                                for (var z = 0; z < (44100/12); z ++)
+                                for (var z = 0; z < (44100*0.015); z ++)
                                 {
-                                    newData[cont] = Math.round(128 + 127 * Math.sin((z * 2 * Math.PI * (countLines[i].length+440)) /44100));
+                                    var linha = countLines[i].replace(/\t/g, "   ");
+                                    newData[cont] = Math.round(128 + 127 * Math.sin((z * 2 * Math.PI * (linha.length+440)) /44100));
                                     cont ++;
                                 }
     
