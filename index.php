@@ -11,7 +11,7 @@
         <div>        
             <input type="file" id="fileinput" />
             <script type="text/javascript">
-                document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
+                document.getElementById('fileinput').addEventListener('change', ListenYourCode.readSingleFile, false);
             </script>
         </div>
         <div id="graphDiv1"></div>
